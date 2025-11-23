@@ -9,6 +9,7 @@ tags: []
 ##  Deploy AWS Server
 
 For deploy the server you need to use AWS Academy, for that you need to access to the AWS Laboratory and click in the bottom Start Lab. 
+![Preview](https://github.com/Cristian31310/Trabajo_Despliegue_Web_Architecture/blob/main/Pasted%20image%2020251118141521.png)
 ![[Pasted image 20251118141521.png]]
 
 The AWS machine is ready when the "led" color on AWS become green.
