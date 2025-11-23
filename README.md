@@ -14,10 +14,6 @@ For deploy the server you need to use AWS Academy, for that you need to access t
 The AWS machine is ready when the "led" color on AWS become green.
 ![Preview](https://github.com/Cristian31310/Trabajo_Despliegue_Web_Architecture/blob/main/Pasted%20image%2020251118141830.png)
 ![Preview](https://github.com/Cristian31310/Trabajo_Despliegue_Web_Architecture/blob/main/Pasted%20image%20251123231153.png)
-
-![[Pasted image 20251118141830.png]]
-![[Pasted image 20251123231153.png]]
-
 ## Connect With SSH to the Machine
 
 Click in AWS (the one in the images before) to access to the AWS Dashboard.
