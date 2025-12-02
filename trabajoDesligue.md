@@ -2,46 +2,55 @@
 id: trabajoDesligue
 aliases:
   - Trabajo Web Architecture
+  - Web Architecture
 tags: []
 ---
-# Trabajo Web Architecture
-
+# Web Architecture 
 ##  Deploy AWS Server
 
 For deploy the server you need to use AWS Academy, for that you need to access to the AWS Laboratory and click in the bottom Start Lab. 
-![[Pasted image 20251118141521.png]]
+
+![AWS START](./Pasted_image_20251118141521.png)
 
 The AWS machine is ready when the "led" color on AWS become green.
-![[Pasted image 20251118141830.png]]
-![[Pasted image 20251123231153.png]]
+
+![AWS OFF](./Pasted_image_20251118141830.png)
+
+![AWS ON](./Pasted_image_20251123231153.png)
 
 ## Connect With SSH to the Machine
 
 Click in AWS (the one in the images before) to access to the AWS Dashboard.
 In the AWS Dashboard click in Key pairs.
-![[Pasted image 20251122182546.png]]
+![Preview](./Pasted_image_20251122182546.png)
 
 Click in Create Key pair bottom.
+![Preview](./Pasted_image_20251123231722.png)
+
 ![[Pasted image 20251123231722.png]]
 
 Write the name of your key and click in create Key pair bottom.
-With the documento .pem you can access to the machine with SSH.
-![[Pasted image 20251122182940.png]]
+With the `documento .pem` you can access to the machine with SSH.
 
-In the terminal you need to go to the directory that have the .pem key, and write the followin command.  Change the image's IP with your machine's IP.
+![Preview](./Pasted_image_20251122182940.png)
 
-![[Pasted image 20251122183651.png]]
+In the terminal you need to go to the directory that have the .pem key, and write the following command.  Change the image's IP with your machine's IP.
+
+![Preview](./Pasted_image_20251122183651.png)
+
 ```
 ssh -i daw.pem ubuntu@98.80.13.213
 ```
 
 Once you connect with the machine yo will have something like this.
-![[Pasted image 20251122184435.png]]
+
+![Preview](./Pasted_image_20251122184435.png)
+
 ## Obtain Your Machine's Public IP
 
 Go to the AWS dashboard, click in Instances (running) and click in Instances ID. You will have the next menu.
 
-![[Pasted image 20251122184115.png]]
+![Preview](./Pasted_image_20251122184115.png)
 
 ## Containers With Docker 
 
@@ -127,37 +136,36 @@ CONTAINER ID   IMAGE                        COMMAND        CREATED         STATU
 ### Configuring Firewall
 Before you use use Portainer you need to configure your machine's firewall. 
 For configure de AWS firewall you need to go to the dashboard. In the dashboard you click in security groups
-![[Pasted image 20251122213912.png]]
+![Preview](./Pasted_image_20251122213912.png)
 
 In there you click in the Scurity group ID of the security group Launch Wizard
-![[Pasted image 20251122214049.png]]
+![Preview](./Pasted_image_20251122214049.png)
 
 Now you edit the in inbound rules and in the page will be open you need to click on add rule
-![[Pasted image 20251122214258.png]]
+![Preview](./Pasted_image_20251122214258.png)
 
-![[Pasted image 20251122214548.png]]
+![Preview](./Pasted_image_20251122214548.png)
 
 And add the following rule: 
+![Preview](./Pasted_image_20251122214704.png)
 
-![[Pasted image 20251122214704.png]]
-
-You need to spicify that is the port 9443 because is the port that use Portainer.
+You need to specify that is the port 9443 because is the port that use Portainer.
 
 For logging In on Portainer you need to write your machine IP on the browser.
-![[Pasted image 20251122180331.png]]
+
+![Preview](./Pasted_image_20251122180331.png)
 
 The browser may throw you this error, don't worry, click on the advance bottom
 
-![[Pasted image 20251122180643.png]]
+![Preview](./Pasted_image_20251122180643.png)
 
-![[Pasted image 20251122180743.png]]
+![Preview](./Pasted_image_20251122180743.png)
 
 And you will have a logging screen like this: 
-
-![[Pasted image 20251122180958.png]]
+![Preview](./Pasted_image_20251122180958.png)
 
 Write your username and password and there have your Portainer ready to use.
-![[Pasted image 20251122181646.png]]
+![Preview](./Pasted_image_20251122181646.png)
 
 ## Nginx
 
@@ -168,24 +176,26 @@ For install Nginx you gonna use the following docker commands:
 docker pull nginx:trixie-perl
 ```
 
-And with this command create the nginx docker container 
+And with this command create the Nginx docker container 
 ```
 $ docker run --name some-nginx -v /some/content:/usr/share/nginx/html:ro -d nginx
 
 ```
 
-And for acces to nginx dashboard we need to configure the firewall of AWS like we did before, but 
+And for access to Nginx dashboard we need to configure the firewall of AWS like we did before, but 
 this time with port 8181 instead of the port 9443, after you did that you need to write your 
 machine's IP and the port 8181. You will have a log in menu like this
-![[Pasted image 20251123214600.png]]
-For log in nginx you only need to write an email, a name  and password. You will acces in to the dashboard
+![Preview](./Pasted_image_20251123214600.png)
 
-![[Pasted image 20251123214847.png]]
+For log in Nginx you only need to write an email, a name  and password. You will access in to the dashboard
+![Preview](./Pasted_image_20251123214847.png)
+
 
 ## Deploy Nginx with Stakc
 
 Go to stacks on Portainer dashboard, and ad Stack
-![[Pasted image 20251123230058.png]]
+
+![Preview](./Pasted_image_20251123230058.png)
 
 And the next configuration in the web editor
 
@@ -214,47 +224,62 @@ networks:
   daw: 
     external: true
 ```
-![[Pasted image 20251123230306.png]]
+
+![Preview](./Pasted_image_20251123230306.png)
+
 ## Create Containers Network
 
 You need to go to the Portainer's dashboard and click on networks 
-![[Pasted image 20251123215648.png]]
+
+![Preview](./Pasted_image_20251123215648.png)
+
 
 And click in create new network
-![[Pasted image 20251123215756.png]]
 
-And create the network with the name daw, the subnet 192.16812.0/24 with the gateway 192.168.12.1. Enable the acces control.
-![[Pasted image 20251123220216.png]]
+![Preview](./Pasted_image_20251123215756.png)
 
-To add Portainer and Nginx to the daw network you need to go containers and click in the Portainer or Nginx container. You need to do the same steps to add both to the daw network.
-![[Pasted image 20251123221635.png]]
+And create the network with the name _daw_, the subnet 192.16812.0/24 with the gateway 192.168.12.1. Enable the access control.
+
+![Preview](./Pasted_image_20251123220216.png)
+
+To add Portainer and Nginx to the _daw_ network you need to go containers and click in the Portainer or Nginx container. You need to do the same steps to add both to the _daw_ network.
+
+![Preview](./Pasted_image_20251123221635.png)
 
 Once you click in the container you need to go all down in the page, and click in join network
-![[Pasted image 20251123221756.png]]
+
+![Preview](./Pasted_image_20251123221756.png)
 
 ## Add SSL Certificate to Nginx
 
-### Get SSL Cerficate and Key From Cloudflare
+### Get SSL Certificate and Key From Cloudflare
 You need to go to SSL/TLS > Client Certificate in to the Claudflare domain dashboard
-![[Pasted image 20251123223653.png]]
-Click in create cerficate
-![[Pasted image 20251123223858.png]]
+
+![Preview](./Pasted_image_20251123223653.png)
+
+Click in create certificate
+
+![Preview](./Pasted_image_20251123223858.png)
 and create
-![[Pasted image 20251123223915.png]]
+
+![Preview](./Pasted_image_20251123223915.png)
 
 And you obtain two files, one is the certificate and the other the key.
 
 ### Add SSL Certificate In Nginx
 
 In Nginx dashboard you need to go to certificates
-![[Pasted image 20251123224412.png]]
+
+![Preview](./Pasted_image_20251123224412.png)
 
 Click in add certificate > Custom certificate
-![[Pasted image 20251123224443.png]]
 
-![[Pasted image 20251123224513.png]]
+![Preview](./Pasted_image_20251123224443.png)
+
+![Preview](./Pasted_image_20251123224513.png)
 
 And add the certificate, the key certificate and the name of your custom certificate.
-![[Pasted image 20251123224720.png]]
 
-## Deploy Dinamic DNS With Cloudflare's API
+![Preview](./Pasted_image_20251123224720.png)
+
+## Deploy Dynamic DNS With Cloudflare's API
